@@ -1,7 +1,8 @@
 """Схемы API для работы с пользователями."""
+
 from __future__ import annotations
+
 from datetime import datetime
-from typing import Optional
 
 from pydantic import BaseModel, EmailStr, Field
 
@@ -10,34 +11,32 @@ from app.domain.dto.user import UserCreateDTO, UserDTO
 
 class UserBase(BaseModel):
     """Базовая схема пользователя."""
-    
+
     email: EmailStr
-    is_active: Optional[bool] = True
-    is_verified: Optional[bool] = False
+    is_active: bool | None = True
+    is_verified: bool | None = False
 
 
 class UserCreate(BaseModel):
     """Схема для создания пользователя."""
-    
+
     email: EmailStr
     password: str = Field(..., min_length=8)
 
     def to_dto(self) -> UserCreateDTO:
         """Преобразует схему в DTO."""
-        return UserCreateDTO(
-            email=self.email,
-            password=self.password
-        )
+        return UserCreateDTO(email=self.email, password=self.password)
 
 
 class UserCreateResp(BaseModel):
     """Схема ответа при создании юзера."""
+
     email: EmailStr
 
 
 class UserRead(UserBase):
     """Схема для чтения данных пользователя."""
-    
+
     created_at: datetime
     updated_at: datetime | None = None
 
@@ -51,8 +50,8 @@ class UserRead(UserBase):
             created_at=dto.created_at,
             updated_at=dto.updated_at,
         )
-    
 
     class Config:
         """Конфигурация модели."""
+
         from_attributes = True

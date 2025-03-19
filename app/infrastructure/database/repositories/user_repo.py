@@ -1,5 +1,4 @@
 """SQL реализация репозитория пользователей."""
-from typing import Optional
 
 from sqlalchemy import insert, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -11,16 +10,16 @@ from app.infrastructure.database.models.user import UserModel as UserModel
 
 class UserRepository(IUserRepository):
     """SQLAlchemy реализация репозитория пользователей."""
-    
+
     def __init__(self, session: AsyncSession):
         self.session = session
-    
-    async def find_by_email(self, email: str) -> Optional[User]:
+
+    async def find_by_email(self, email: str) -> User | None:
         """Находит пользователля по email."""
         stmt = select(UserModel).where(UserModel.email == email)
         result = await self.session.execute(stmt)
         user_model = result.scalar_one_or_none()
-        
+
         if user_model:
             return User(
                 email=user_model.email,
@@ -31,7 +30,7 @@ class UserRepository(IUserRepository):
                 updated_at=user_model.updated_at,
             )
         return None
-    
+
     async def create_user(self, user: User) -> str:
         """Создает пользователя в базе данных и возвращает первичный ключ (email)."""
         result = await self.session.execute(

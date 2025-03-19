@@ -6,6 +6,7 @@ from uuid import UUID
 @dataclass
 class LoginDTO:
     """DTO для авторизации."""
+
     email: str
     password: str
 
@@ -13,6 +14,7 @@ class LoginDTO:
 @dataclass
 class TokenDTO:
     """DTO для ответа авторизации."""
+
     access_token: str
     refresh_token: UUID
     expires_at: datetime

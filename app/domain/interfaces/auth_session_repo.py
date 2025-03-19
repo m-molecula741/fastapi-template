@@ -2,7 +2,6 @@
 
 from abc import ABC, abstractmethod
 from datetime import datetime
-from typing import Optional
 from uuid import UUID
 
 from app.domain.entities.auth import AuthSession
@@ -17,7 +16,7 @@ class IAuthSessionRepository(ABC):
         pass
 
     @abstractmethod
-    async def find_by_refresh_token(self, refresh_token: UUID) -> Optional[AuthSession]:
+    async def find_by_refresh_token(self, refresh_token: UUID) -> AuthSession | None:
         """Находит авторизационную сессию по refresh token."""
         pass
 

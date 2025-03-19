@@ -1,8 +1,8 @@
 """Простой логгер для всего приложения."""
+
 import logging
 import os
 import sys
-from datetime import datetime
 
 # Создаем директорию для логов если она не существует
 os.makedirs("logs", exist_ok=True)
@@ -43,30 +43,33 @@ logging.getLogger("fastapi").setLevel(logging.WARNING)
 
 # Функции-обертки для удобного структурированного логирования
 
+
 def log_error(message: str, error=None, **kwargs):
     """Логирует ошибку с контекстом."""
     error_message = f"{message}"
     if error:
         error_message = f"{message}: {str(error)}"
-    
+
     context = " | ".join([f"{k}={v}" for k, v in kwargs.items()]) if kwargs else ""
     if context:
         error_message = f"{error_message} | {context}"
-    
+
     logger.error(error_message)
+
 
 def log_info(message: str, **kwargs):
     """Логирует информационное сообщение с контекстом."""
     context = " | ".join([f"{k}={v}" for k, v in kwargs.items()]) if kwargs else ""
     if context:
         message = f"{message} | {context}"
-    
+
     logger.info(message)
+
 
 def log_warning(message: str, **kwargs):
     """Логирует предупреждение с контекстом."""
     context = " | ".join([f"{k}={v}" for k, v in kwargs.items()]) if kwargs else ""
     if context:
         message = f"{message} | {context}"
-    
-    logger.warning(message) 
+
+    logger.warning(message)

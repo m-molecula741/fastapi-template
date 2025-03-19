@@ -1,7 +1,7 @@
 """Конфигурация для pytest."""
-import asyncio
+
 import logging
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from unittest.mock import AsyncMock, MagicMock
 
 import pytest
@@ -25,7 +25,7 @@ def disable_logging():
 def mock_uow() -> MagicMock:
     """Создает мок для Unit of Work."""
     uow = MagicMock(spec=IUOW)
-    
+
     # Создаем специальный мок для __aexit__, который вызывает commit
     async def async_exit(exc_type=None, exc_val=None, exc_tb=None):
         if exc_type is None:
@@ -33,24 +33,24 @@ def mock_uow() -> MagicMock:
         else:
             await uow.rollback()
         return False
-    
+
     uow.__aenter__ = AsyncMock(return_value=uow)
     uow.__aexit__ = AsyncMock(side_effect=async_exit)
     uow.commit = AsyncMock()
     uow.rollback = AsyncMock()
-    
+
     # Моки для репозиториев
     uow.users = MagicMock()
     uow.users.find_by_email = AsyncMock()
     uow.users.create_user = AsyncMock()
-    
+
     uow.auth_sessions = MagicMock()
     uow.auth_sessions.add = AsyncMock()
     uow.auth_sessions.find_by_refresh_token = AsyncMock()
     uow.auth_sessions.remove = AsyncMock()
     uow.auth_sessions.delete_by_refresh_token = AsyncMock()
     uow.auth_sessions.update_refresh_token = AsyncMock()
-    
+
     return uow
 
 
@@ -61,11 +61,11 @@ def mock_token_service() -> MagicMock:
     service.generate_access_token = MagicMock(return_value="mock_access_token")
     service.generate_refresh_token = MagicMock(return_value="mock_refresh_token")
     service.get_refresh_token_expires_at = MagicMock(
-        return_value=datetime.now(timezone.utc) + timedelta(days=7)
+        return_value=datetime.now(UTC) + timedelta(days=7)
     )
     service.verify_access_token = MagicMock()
     service.get_user_email_from_token = MagicMock()
-    
+
     return service
 
 
@@ -76,8 +76,8 @@ def mock_user() -> UserDTO:
         email="test@example.com",
         is_active=True,
         is_verified=True,
-        created_at=datetime.now(timezone.utc),
-        updated_at=datetime.now(timezone.utc)
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     )
 
 
@@ -101,5 +101,5 @@ def mock_tokens() -> TokenDTO:
     return TokenDTO(
         access_token="mock_access_token",
         refresh_token="mock_refresh_token",
-        expires_at=datetime.now(timezone.utc) + timedelta(days=7)
+        expires_at=datetime.now(UTC) + timedelta(days=7),
     )

@@ -12,8 +12,6 @@ router = APIRouter()
 
 
 @router.get("/me", response_model=UserRead)
-async def get_current_user(
-    current_user: Annotated[UserDTO, Depends(get_current_user)]
-):
+async def get_current_user(current_user: Annotated[UserDTO, Depends(get_current_user)]):
     """Получает текущего пользователя."""
     return UserRead.from_dto(current_user)

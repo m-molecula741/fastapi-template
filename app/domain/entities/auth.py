@@ -1,6 +1,6 @@
 from datetime import datetime
-from typing import Optional
 from uuid import UUID
+
 
 class AuthSession:
     """Доменная модель авторизационной сессии."""
@@ -11,8 +11,8 @@ class AuthSession:
         refresh_token: UUID,
         expires_at: datetime,
         user_email: str,
-        created_at: Optional[datetime] = None,
-        updated_at: Optional[datetime] = None
+        created_at: datetime | None = None,
+        updated_at: datetime | None = None,
     ):
         """Инициализирует авторизационную сессию."""
         self.uuid = uuid
@@ -30,5 +30,5 @@ class AuthSession:
             "expires_at": self.expires_at,
             "user_email": self.user_email,
             "created_at": self.created_at,
-            "updated_at": self.updated_at
+            "updated_at": self.updated_at,
         }

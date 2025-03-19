@@ -1,13 +1,14 @@
 """Use case для логина пользователя."""
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
+
+from uuid_extensions import uuid7
+
 from app.domain.dto.auth import LoginDTO, TokenDTO
 from app.domain.entities.auth import AuthSession
-from app.domain.entities.user import User
 from app.domain.exceptions import AuthenticationException
 from app.domain.interfaces.token_service import ITokenService
 from app.domain.interfaces.uow import IUOW
-from uuid_extensions import uuid7
 
 
 class LoginUseCase:
@@ -20,11 +21,11 @@ class LoginUseCase:
 
     async def execute(self, login_data: LoginDTO) -> TokenDTO:
         """Авторизует пользователя и возвращает токены."""
-        async with self.uow:          
+        async with self.uow:
             user = await self.uow.users.find_by_email(login_data.email)
             if not user or not user.verify_password(login_data.password):
                 raise AuthenticationException(message="Неверный email или пароль")
-            
+
             access_token = self.token_service.generate_access_token(user.email)
             refresh_token = self.token_service.generate_refresh_token()
             expires_at = self.token_service.get_refresh_token_expires_at()
@@ -34,13 +35,13 @@ class LoginUseCase:
                 refresh_token=refresh_token,
                 expires_at=expires_at,
                 user_email=user.email,
-                created_at=datetime.now(timezone.utc),
+                created_at=datetime.now(UTC),
             )
-            
+
             await self.uow.auth_sessions.add(auth_session)
 
             return TokenDTO(
                 access_token=access_token,
                 refresh_token=refresh_token,
-                expires_at=expires_at
+                expires_at=expires_at,
             )

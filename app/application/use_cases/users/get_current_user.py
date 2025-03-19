@@ -7,6 +7,7 @@ from app.domain.interfaces.uow import IUOW
 
 class GetCurrentUserUseCase:
     """Получение текущего пользователя."""
+
     def __init__(self, uow: IUOW, token_service: ITokenService):
         self.uow = uow
         self.token_service = token_service
@@ -19,8 +20,8 @@ class GetCurrentUserUseCase:
             if not email:
                 raise ValueError("Не удалось извлечь email из токена")
         except Exception as e:
-            raise ValueError(f"Ошибка при декодировании токена: {str(e)}")
-        
+            raise ValueError(f"Ошибка при декодировании токена: {str(e)}") from e
+
         current_user = await self.uow.users.find_by_email(email=email)
         if not current_user:
             raise ValueError("Пользователь не найден")

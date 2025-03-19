@@ -1,10 +1,8 @@
 from abc import ABC, abstractmethod
 
-from abc import ABC, abstractmethod
-from typing import Any
-
 from app.domain.interfaces.auth_session_repo import IAuthSessionRepository
 from app.domain.interfaces.user_repo import IUserRepository
+
 
 class IUOW(ABC):
     @abstractmethod
@@ -33,7 +31,7 @@ class IUOW(ABC):
     @property
     def users(self) -> IUserRepository:
         raise NotImplementedError
-    
+
     @property
     def auth_sessions(self) -> IAuthSessionRepository:
         raise NotImplementedError

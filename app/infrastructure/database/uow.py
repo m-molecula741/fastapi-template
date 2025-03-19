@@ -1,6 +1,9 @@
 from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.domain.interfaces.uow import IUOW
-from app.infrastructure.database.repositories.auth_session_repo import AuthSessionRepository
+from app.infrastructure.database.repositories.auth_session_repo import (
+    AuthSessionRepository,
+)
 from app.infrastructure.database.repositories.user_repo import UserRepository
 
 

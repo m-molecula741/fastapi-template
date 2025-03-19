@@ -7,6 +7,7 @@ requires-python = ">=3.13.2"
 dependencies = [
     "alembic>=1.15.1",
     "asyncpg>=0.30.0",
+    "black>=25.1.0",
     "email-validator>=2.2.0",
     "fastapi>=0.115.11",
     "greenlet>=3.1.1",
@@ -19,6 +20,7 @@ dependencies = [
     "pytest-asyncio>=0.25.3",
     "pytest-mock>=3.14.0",
     "python-multipart>=0.0.20",
+    "ruff>=0.11.0",
     "sqlalchemy>=2.0.39",
     "uuid7>=0.1.0",
     "uvicorn>=0.34.0",
@@ -30,3 +32,20 @@ python_files = "test_*.py"
 python_classes = "Test"
 python_functions = "test_*"
 asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+line-length = 88  # Длина строки (должна совпадать с black)
+
+[tool.ruff.lint]
+select = [
+    "E",  # PEP 8 ошибки
+    "F",  # Ошибки форматирования
+    "I",  # Сортировка импортов (isort)
+    "UP", # Обновление синтаксиса (pyupgrade)
+    "B",  # Ошибки, связанные с неиспользуемыми переменными
+]
+ignore = ["E203", "B008"]
+
+[tool.black]
+line-length = 88
+skip-string-normalization = true  # Опционально: не изменять кавычки

@@ -1,13 +1,14 @@
 """Главный файл приложения."""
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 
-from app.infrastructure.logging.logger import logger, log_info
-from app.infrastructure.database.session import create_tables
-from app.presentation.api.router import api_public_router, api_private_router
-from app.presentation.exception_handlers import register_exception_handlers
 from app.infrastructure.config.settings import get_settings
+from app.infrastructure.database.session import create_tables
+from app.infrastructure.logging.logger import log_info
+from app.presentation.api.router import api_private_router, api_public_router
+from app.presentation.exception_handlers import register_exception_handlers
 
 settings = get_settings()
 
@@ -39,30 +40,26 @@ app.include_router(api_private_router)
 def custom_openapi():
     if app.openapi_schema:
         return app.openapi_schema
-    
+
     openapi_schema = get_openapi(
         title=app.title,
         version=app.version,
         description=app.description,
         routes=app.routes,
     )
-    
+
     # Добавляем компонент безопасности
     openapi_schema["components"] = openapi_schema.get("components", {})
     openapi_schema["components"]["securitySchemes"] = {
-        "cookieAuth": {
-            "type": "apiKey",
-            "in": "cookie",
-            "name": "access_token"
-        }
+        "cookieAuth": {"type": "apiKey", "in": "cookie", "name": "access_token"}
     }
-    
+
     # Добавляем требование безопасности для всех приватных путей
     for path, path_item in openapi_schema["paths"].items():
         if path.startswith("/api/private"):
             for method in path_item:
                 path_item[method]["security"] = [{"cookieAuth": []}]
-    
+
     app.openapi_schema = openapi_schema
     return app.openapi_schema
 

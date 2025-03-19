@@ -1,6 +1,6 @@
 # Makefile для проекта
 
-.PHONY: run test pytest alembic-revision alembic-upgrade clean
+.PHONY: run test pytest alembic-revision alembic-upgrade clean install lint format
 
 # Переменные
 APP_MODULE = app.main:app
@@ -51,23 +51,20 @@ clean:
 	find . -type d -name "*.egg" -exec rm -rf {} +
 	find . -type d -name ".coverage" -exec rm -rf {} +
 
-# Создание виртуального окружения
-venv:
-	@echo "Создание виртуального окружения"
-	python -m venv venv
-	@echo "Для активации выполните: source venv/bin/activate"
-
-# Установка зависимостей
+# Установка зависимостей с использованием uv
 install:
-	@echo "Установка зависимостей"
-	pip install -r requirements.txt
+	@echo "Установка зависимостей с использованием uv"
+	uv pip install --no-deps -e .
 
-# Запуск линтера
+# Запуск линтера ruff
 lint:
-	@echo "Запуск линтера"
-	flake8 app tests
+	@echo "Запуск линтера ruff"
+	ruff check app tests
+	ruff format --check app tests
 
 # Запуск форматирования кода
 format:
 	@echo "Форматирование кода"
+	ruff check --fix app tests
+	ruff format app tests
 	black app tests 

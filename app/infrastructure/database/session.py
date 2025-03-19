@@ -1,11 +1,11 @@
 """Модуль для работы с сессией SQLAlchemy."""
-from typing import AsyncGenerator
 
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
+from collections.abc import AsyncGenerator
+
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.infrastructure.config.settings import get_settings
 from app.infrastructure.logging.logger import logger
-
 
 settings = get_settings()
 
@@ -27,7 +27,7 @@ SessionLocal = async_sessionmaker(
 )
 
 
-async def get_session() -> AsyncGenerator[AsyncSession, None]:
+async def get_session() -> AsyncGenerator[AsyncSession]:
     """Получает сессию базы данных."""
     session = SessionLocal()
     try:
@@ -39,8 +39,8 @@ async def get_session() -> AsyncGenerator[AsyncSession, None]:
 async def create_tables():
     """Создает все таблицы в базе данных."""
     from app.infrastructure.database.models.base import Base
-    
+
     logger.info("Начало создания таблиц в базе данных")
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-    logger.info("Таблицы успешно созданы") 
+    logger.info("Таблицы успешно созданы")

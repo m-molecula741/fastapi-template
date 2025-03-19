@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 from datetime import datetime
-from typing import Dict
+
 
 class ITokenService(ABC):
     """Интерфейс для сервиса работы с токенами."""
@@ -13,7 +13,7 @@ class ITokenService(ABC):
         pass
 
     @abstractmethod
-    def decode_access_token(self, token: str) -> Dict:
+    def decode_access_token(self, token: str) -> dict:
         """Декодирует access token."""
         pass
 
