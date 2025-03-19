@@ -23,11 +23,9 @@ class UOW(IUOW):
     async def __aexit__(self, exc_type, exc_val, exc_tb):
         """Выход из контекстного менеджера."""
         if exc_type is not None:
-            print("rollback")
             await self.rollback()
             await self.session.close()
         else:
-            print("commit")
             await self.commit()
             await self.session.close()
 

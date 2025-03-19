@@ -3,6 +3,7 @@
 from datetime import datetime, timezone
 from uuid import UUID
 from app.domain.dto.auth import TokenDTO
+from app.domain.exceptions import AuthenticationException, RefreshTokenException
 from app.domain.interfaces.token_service import ITokenService
 from app.domain.interfaces.uow import IUOW
 
@@ -24,30 +25,29 @@ class RefreshTokenUseCase:
         async with self.uow:
             auth_session = await self.uow.auth_sessions.find_by_refresh_token(refresh_token)
             if not auth_session:
-                raise ValueError("Недействительный refresh-токен")
+                raise RefreshTokenException(message="Недействительный refresh token")
 
             if auth_session.expires_at < datetime.now(timezone.utc):
-                raise ValueError("Refresh-токен истёк")
+                await self.uow.auth_sessions.remove(auth_session.uuid)
+                raise RefreshTokenException(message="Срок действия refresh token истек")
 
             user = await self.uow.users.find_by_email(auth_session.user_email)
             if not user:
-                raise ValueError("Пользователь не найден")
+                raise AuthenticationException(message="Пользователь не найден")
 
             access_token = self.token_service.generate_access_token(user.email)
             new_refresh_token = self.token_service.generate_refresh_token()
             refresh_token_expires_at = self.token_service.get_refresh_token_expires_at()
 
-            try:
-                await self.uow.auth_sessions.update_refresh_token(
-                    uuid=auth_session.uuid,
-                    refresh_token=new_refresh_token,
-                    expires_at=refresh_token_expires_at,
-                )
-            except Exception as e:
-                raise ValueError(f"Ошибка при обновлении refresh-токена: {str(e)}")
+            # Обновляем refresh токен в текущей сессии
+            await self.uow.auth_sessions.update_refresh_token(
+                auth_session.uuid, 
+                new_refresh_token, 
+                refresh_token_expires_at
+            )
             
-        return TokenDTO(
-            access_token=access_token,
-            refresh_token=new_refresh_token,
-            expires_at=refresh_token_expires_at,
-        )
+            return TokenDTO(
+                access_token=access_token,
+                refresh_token=new_refresh_token,
+                expires_at=refresh_token_expires_at,
+            )

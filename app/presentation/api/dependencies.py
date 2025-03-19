@@ -1,6 +1,6 @@
 """Зависимости для FastAPI."""
 from typing import Annotated
-from fastapi import Cookie, Depends, HTTPException, status
+from fastapi import Cookie, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.application.use_cases.auth.login import LoginUseCase
@@ -9,12 +9,14 @@ from app.application.use_cases.auth.refresh import RefreshTokenUseCase
 from app.application.use_cases.users.get_current_user import GetCurrentUserUseCase
 from app.application.use_cases.users.register import RegisterUserUseCase
 from app.domain.dto.user import UserDTO
+from app.domain.exceptions import AuthenticationException
 from app.domain.interfaces.token_service import ITokenService
 from app.domain.interfaces.uow import IUOW
 from app.infrastructure.database.session import get_session
 from app.infrastructure.database.uow import UOW
 from app.infrastructure.services.token_service import TokenService
 from app.infrastructure.config.settings import get_settings
+from app.infrastructure.logging.logger import log_info, log_warning
 
 
 settings = get_settings()
@@ -57,10 +59,10 @@ async def get_acces_token_from_cookie(
 ) -> str:
     """Извлекает токен из куки."""
     if not access_token:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Токен не предоставлен",
-        )
+        log_warning("Запрос без токена доступа")
+        raise AuthenticationException(message="Токен не предоставлен")
+    
+    log_info("Получен токен доступа из cookie")
     return access_token
 
 
@@ -70,18 +72,23 @@ async def get_current_user(
 ) -> UserDTO:
     """Зависимость для получения текущего пользователя."""
     try:
-        return await usecase.execute(token=access_token)
+        user = await usecase.execute(token=access_token)
+        log_info("Пользователь успешно аутентифицирован", email=user.email)
+        return user
     except Exception as e:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail=str(e),
-        )
+        log_warning("Ошибка аутентификации", error=str(e))
+        raise AuthenticationException(message=str(e))
 
 
 async def get_refresh_token_from_cookie(
     refresh_token: str | None = Cookie(default=None, alias="refresh_token"),
 ) -> str:
     """Извлекает refresh token из куки."""
+    if not refresh_token:
+        log_warning("Запрос без refresh-токена")
+        raise AuthenticationException(message="Refresh-токен не предоставлен")
+    
+    log_info("Получен refresh-токен из cookie")
     return refresh_token
 
 

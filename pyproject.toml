@@ -15,8 +15,18 @@ dependencies = [
     "pydantic>=2.10.6",
     "pydantic-settings>=2.8.1",
     "pyjwt>=2.10.1",
+    "pytest>=8.3.5",
+    "pytest-asyncio>=0.25.3",
+    "pytest-mock>=3.14.0",
     "python-multipart>=0.0.20",
     "sqlalchemy>=2.0.39",
     "uuid7>=0.1.0",
     "uvicorn>=0.34.0",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test"
+python_functions = "test_*"
+asyncio_default_fixture_loop_scope = "function"

@@ -15,8 +15,6 @@ class GetCurrentUserUseCase:
         """Возвращает текущего пользователя."""
         try:
             payload = self.token_service.decode_access_token(token)
-            print("payload")
-            print(payload)
             email = payload.get("sub")
             if not email:
                 raise ValueError("Не удалось извлечь email из токена")
