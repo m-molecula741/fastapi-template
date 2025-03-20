@@ -1,6 +1,4 @@
-"""Схемы API для работы с пользователями."""
-
-from __future__ import annotations
+"""Схемы данных для пользователей."""
 
 from datetime import datetime
 
@@ -9,49 +7,55 @@ from pydantic import BaseModel, EmailStr, Field
 from app.domain.dto.user import UserCreateDTO, UserDTO
 
 
-class UserBase(BaseModel):
-    """Базовая схема пользователя."""
-
-    email: EmailStr
-    is_active: bool | None = True
-    is_verified: bool | None = False
-
-
 class UserCreate(BaseModel):
     """Схема для создания пользователя."""
 
     email: EmailStr
-    password: str = Field(..., min_length=8)
+    password: str = Field(..., min_length=8, max_length=100)
 
     def to_dto(self) -> UserCreateDTO:
-        """Преобразует схему в DTO."""
-        return UserCreateDTO(email=self.email, password=self.password)
+        """Конвертирует схему в DTO."""
+        return UserCreateDTO(
+            email=self.email,
+            password=self.password,
+        )
 
 
 class UserCreateResp(BaseModel):
-    """Схема ответа при создании юзера."""
+    """Схема ответа на создание пользователя."""
 
-    email: EmailStr
+    email: str
 
 
-class UserRead(UserBase):
-    """Схема для чтения данных пользователя."""
+class UserBase(BaseModel):
+    """Базовая схема пользователя."""
 
-    created_at: datetime
+    email: str
+
+
+class UserUpdate(UserBase):
+    """Схема для обновления пользователя."""
+
+    password: str = Field(None, min_length=8, max_length=100)
+    is_active: bool = None
+    is_verified: bool = None
+
+
+class UserResponse(UserBase):
+    """Схема ответа для пользователя."""
+
+    is_active: bool
+    is_verified: bool
+    created_at: datetime | None = None
     updated_at: datetime | None = None
 
-    @staticmethod
-    def from_dto(dto: UserDTO) -> UserRead:
-        """Преобразует DTO в схему."""
-        return UserRead(
+    @classmethod
+    def from_dto(cls, dto: UserDTO) -> "UserResponse":
+        """Создает экземпляр схемы из DTO."""
+        return cls(
             email=dto.email,
             is_active=dto.is_active,
             is_verified=dto.is_verified,
             created_at=dto.created_at,
             updated_at=dto.updated_at,
         )
-
-    class Config:
-        """Конфигурация модели."""
-
-        from_attributes = True

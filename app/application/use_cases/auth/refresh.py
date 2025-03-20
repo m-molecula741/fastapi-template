@@ -16,16 +16,18 @@ class RefreshTokenUseCase:
         self,
         uow: IUOW,
         token_service: ITokenService,
+        refresh_token: UUID,
     ):
         self.uow = uow
         self.token_service = token_service
+        self.refresh_token = refresh_token
 
-    async def execute(self, refresh_token: UUID) -> TokenDTO:
+    async def execute(self) -> TokenDTO:
         """Обновляет access-токен и refresh-токен."""
 
         async with self.uow:
             auth_session = await self.uow.auth_sessions.find_by_refresh_token(
-                refresh_token
+                self.refresh_token
             )
             if not auth_session:
                 raise RefreshTokenException(message="Недействительный refresh token")

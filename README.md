@@ -4,6 +4,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.115.11+-green.svg)
 ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0.39+-yellow.svg)
 ![Pydantic](https://img.shields.io/badge/Pydantic-2.10.6+-orange.svg)
+![Dishka](https://img.shields.io/badge/Dishka-1.4.2+-purple.svg)
 
 Этот проект представляет собой шаблон веб-приложения, построенного с использованием принципов чистой архитектуры (Clean Architecture).
 
@@ -28,6 +29,7 @@
   - [Миграции базы данных](#миграции-базы-данных)
   - [Линтинг и форматирование](#линтинг-и-форматирование)
   - [Особенности реализации](#особенности-реализации)
+    - [Использование Dishka](#использование-dishka)
 
 ## Архитектура проекта
 
@@ -66,6 +68,7 @@ app/
 │   ├── database/   # Работа с базой данных
 │   │   ├── models/ # ORM модели
 │   │   └── repositories/ # Реализации репозиториев
+│   ├── di/         # Внедрение зависимостей (Dishka)
 │   ├── logging/    # Логирование
 │   └── services/   # Реализации сервисов
 └── presentation/   # Представительский слой
@@ -170,8 +173,58 @@ make format
 
 ## Особенности реализации
 
-- **Unit of Work** паттерн для управления транзакциями
-- **Repository** паттерн для абстракции работы с БД
-- **DTO** (Data Transfer Objects) для передачи данных между слоями
-- **JWT** для безопасной аутентификации
-- **Dependency Injection** для обеспечения гибкости и тестируемости
+В проекте реализованы следующие архитектурные и технические решения:
+
+1. **Чистая архитектура** — строгое разделение ответственности между слоями.
+2. **DTO** (Data Transfer Objects) — для передачи данных между слоями.
+3. **Unit of Work и Repository** — для работы с данными.
+4. **JWT-аутентификация** — для безопасной авторизации пользователей.
+5. **Внедрение зависимостей с Dishka** — прозрачное управление зависимостями.
+   - Прозрачное внедрение зависимостей через провайдеры
+   - Автоматическое управление жизненным циклом зависимостей
+   - Интеграция с FastAPI через `FromDishka[]`
+   - Поддержка тестирования с заменой зависимостей моками
+
+### Использование Dishka
+
+Dishka используется для организации системы внедрения зависимостей (DI), что позволяет:
+
+1. **Централизованно управлять зависимостями** через провайдеры:
+   - `AppProvider` - общие зависимости приложения (настройки, БД, сервисы)
+   - `UseCaseProvider` - провайдеры для use cases
+
+2. **Упростить тестирование** за счет легкой замены настоящих компонентов моками:
+   ```python
+   # Пример использования в тестах
+   login_usecase = LoginUseCase(mock_uow, mock_token_service)
+   ```
+
+3. **Улучшить типизацию** в API-эндпоинтах:
+   ```python
+   @router.post(
+    "/register", response_model=UserCreateResp, status_code=status.HTTP_201_CREATED
+   )
+   @inject
+   async def create_user(
+      user_data: UserCreate,
+      register_usecase: FromDishka[RegisterUserUseCase],
+   ) -> UserCreateResp:
+       # ...
+   ```
+
+4. **Автоматически управлять жизненным циклом** ресурсов с разными областями видимости:
+   - `Scope.APP` - одиночные экземпляры на все приложение
+   - `Scope.REQUEST` - новый экземпляр для каждого запроса
+
+5. **Соблюдать принципы чистой архитектуры**, так как зависимости внедряются на уровне инфраструктуры и представления, не нарушая слои домена и приложения.
+
+Контейнер настраивается при запуске приложения:
+```python
+def setup_container(app: FastAPI) -> Container:
+    container = Container()
+    container.register_provider(AppProvider())
+    container.register_provider(UseCaseProvider())
+    container.register_provider(HTTPProvider())
+    setup_dishka(app, container)
+    return container
+```

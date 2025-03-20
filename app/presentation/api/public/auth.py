@@ -1,31 +1,26 @@
 """API для работы с авторизацией."""
 
-from typing import Annotated
-
-from fastapi import APIRouter, Depends, Response, status
+from dishka.integrations.fastapi import FromDishka, inject
+from fastapi import APIRouter, Response, status
 
 from app.application.use_cases.auth.login import LoginUseCase
 from app.application.use_cases.auth.refresh import RefreshTokenUseCase
 from app.domain.exceptions import AuthenticationException
-from app.infrastructure.config.settings import get_settings
+from app.infrastructure.config.settings import Settings
 from app.infrastructure.logging.logger import log_error, log_info
-from app.presentation.api.dependencies import (
-    get_login_usecase,
-    get_refresh_token_from_cookie,
-    get_refresh_token_usecase,
-)
 from app.presentation.schemas.auth import LoginRequest, TokenResponse
 
 router = APIRouter()
-settings = get_settings()
 
 
 @router.post("/login", response_model=TokenResponse, status_code=status.HTTP_200_OK)
+@inject
 async def login(
     login_data: LoginRequest,
-    login_usecase: Annotated[LoginUseCase, Depends(get_login_usecase)],
     response: Response,
-):
+    login_usecase: FromDishka[LoginUseCase],
+    settings: FromDishka[Settings],
+) -> TokenResponse:
     """Эндпоинт для авторизации пользователя."""
     log_info("Получен запрос на авторизацию", email=login_data.email)
 
@@ -59,18 +54,17 @@ async def login(
 
 
 @router.patch("/refresh", response_model=TokenResponse, status_code=status.HTTP_200_OK)
+@inject
 async def refresh(
-    refresh_token: Annotated[str, Depends(get_refresh_token_from_cookie)],
-    refresh_token_usecase: Annotated[
-        RefreshTokenUseCase, Depends(get_refresh_token_usecase)
-    ],
     response: Response,
-):
+    refresh_token_usecase: FromDishka[RefreshTokenUseCase],
+    settings: FromDishka[Settings],
+) -> TokenResponse:
     """Эндпоинт для обновления refresh token."""
     log_info("Получен запрос на обновление токена")
 
     try:
-        tokens = await refresh_token_usecase.execute(refresh_token)
+        tokens = await refresh_token_usecase.execute()
 
         # Устанавливаем куки для новых токенов
         response.set_cookie(

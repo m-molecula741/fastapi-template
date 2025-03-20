@@ -99,3 +99,421 @@
 2025-03-20 01:40:31 - INFO - [logger.py:66] - Пользователь успешно вышел из системы | email=user7@example.com
 2025-03-20 01:40:36 - INFO - [logger.py:66] - Запрос проверки работоспособности API
 2025-03-20 01:40:39 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 12:07:03 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:07:03 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:07:03 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:07:37 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:07:37 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:07:37 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:07:37 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 12:07:53 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:07:53 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:07:53 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:08:05 - INFO - [logger.py:66] - Запрос проверки работоспособности API
+2025-03-20 12:08:09 - INFO - [logger.py:66] - Запрос проверки работоспособности API
+2025-03-20 12:08:24 - ERROR - [logger.py:57] - Необработанная ошибка: 'NoneType' object has no attribute 'get_by_name' | path=/api/public/users/register
+2025-03-20 12:08:33 - INFO - [logger.py:66] - Запрос проверки работоспособности API
+2025-03-20 12:10:54 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 12:10:54 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:10:54 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:10:54 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:13:49 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:13:49 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:13:49 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:13:52 - INFO - [logger.py:66] - Запрос проверки работоспособности API
+2025-03-20 12:13:55 - INFO - [logger.py:66] - Запрос проверки работоспособности API
+2025-03-20 12:14:03 - ERROR - [logger.py:57] - Необработанная ошибка: 'NoneType' object has no attribute 'get_by_name' | path=/api/public/users/register
+2025-03-20 12:15:19 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:15:19 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:15:19 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:15:19 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 12:26:09 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:26:09 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:26:09 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:27:43 - INFO - [logger.py:66] - Запрос проверки работоспособности API
+2025-03-20 12:27:47 - INFO - [logger.py:66] - Запрос проверки работоспособности API
+2025-03-20 12:27:58 - INFO - [logger.py:66] - Регистрация нового пользователя с email: user10@example.com
+2025-03-20 12:27:59 - INFO - [logger.py:66] - Пользователь с email user10@example.com успешно зарегистрирован
+2025-03-20 12:27:59 - ERROR - [logger.py:57] - Необработанная ошибка: 'str' object has no attribute 'email' | path=/api/public/users/register
+2025-03-20 12:30:11 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 12:30:12 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:30:12 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:30:12 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:30:15 - INFO - [logger.py:66] - Регистрация нового пользователя с email: user10@example.com
+2025-03-20 12:30:15 - WARNING - [logger.py:75] - Пользователь с email user10@example.com уже существует
+2025-03-20 12:30:15 - ERROR - [logger.py:57] - Ошибка валидации: Пользователь с email user10@example.com уже существует | path=/api/public/users/register
+2025-03-20 12:30:25 - INFO - [logger.py:66] - Регистрация нового пользователя с email: user11@example.com
+2025-03-20 12:30:25 - INFO - [logger.py:66] - Пользователь с email user11@example.com успешно зарегистрирован
+2025-03-20 12:30:40 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 12:34:00 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:34:00 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:34:00 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:34:07 - INFO - [logger.py:66] - Регистрация нового пользователя с email: user12@example.com
+2025-03-20 12:34:07 - INFO - [logger.py:66] - Пользователь с email user12@example.com успешно зарегистрирован
+2025-03-20 12:34:21 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user12@example.com
+2025-03-20 12:34:21 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user12@example.com
+2025-03-20 12:34:29 - ERROR - [logger.py:57] - Необработанная ошибка: 'NoneType' object has no attribute 'get_by_name' | path=/api/private/users/me
+2025-03-20 12:34:33 - ERROR - [logger.py:57] - Необработанная ошибка: 'NoneType' object has no attribute 'get_by_name' | path=/api/private/users/me
+2025-03-20 12:43:02 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 12:43:03 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:43:03 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:43:03 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:43:07 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 12:43:07 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Ошибка при декодировании токена: Not enough segments
+2025-03-20 12:49:17 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 12:49:19 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:49:19 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:49:19 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:49:22 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 12:49:22 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Ошибка при декодировании токена: Not enough segments
+2025-03-20 12:49:24 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 12:49:24 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Ошибка при декодировании токена: Not enough segments
+2025-03-20 12:49:25 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 12:49:25 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Ошибка при декодировании токена: Not enough segments
+2025-03-20 12:49:40 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 12:49:40 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Ошибка при декодировании токена: Not enough segments
+2025-03-20 12:52:09 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 12:52:11 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:52:11 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:52:11 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:52:16 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 12:52:16 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 12:52:52 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user12@example.com
+2025-03-20 12:52:52 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user12@example.com
+2025-03-20 12:52:56 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 12:52:56 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 12:52:57 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 12:52:57 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 12:52:57 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 12:52:57 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 12:52:57 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 12:52:57 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 12:53:40 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 12:53:41 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:53:41 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:53:41 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:53:44 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 12:53:44 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 12:58:55 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 12:58:56 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 12:58:56 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 12:58:56 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 12:58:59 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 12:58:59 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 13:12:22 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 13:12:23 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 13:12:23 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 13:12:23 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 13:12:27 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 13:12:27 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 13:12:35 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user12@example.com
+2025-03-20 13:12:35 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user12@example.com
+2025-03-20 13:12:41 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 13:12:41 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 13:12:43 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 13:12:43 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 13:12:43 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 13:12:43 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 13:12:43 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 13:12:43 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 13:13:13 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 13:13:16 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 13:13:16 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 13:13:16 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 13:13:21 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 13:13:21 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 13:23:47 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 13:23:48 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 13:23:48 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 13:23:49 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 13:23:55 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user12@example.com
+2025-03-20 13:23:55 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user12@example.com
+2025-03-20 13:23:59 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 13:23:59 - ERROR - [logger.py:57] - Необработанная ошибка: 'FromDishka' object has no attribute 'email' | path=/api/private/users/me
+2025-03-20 13:30:08 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 13:33:34 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 13:33:34 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 13:33:34 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 13:33:38 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user12@example.com
+2025-03-20 13:33:39 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user12@example.com
+2025-03-20 13:33:43 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 13:33:43 - ERROR - [logger.py:57] - Необработанная ошибка: 'FromDishka' object has no attribute 'email' | path=/api/private/users/me
+2025-03-20 13:33:45 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 13:33:45 - ERROR - [logger.py:57] - Необработанная ошибка: 'FromDishka' object has no attribute 'email' | path=/api/private/users/me
+2025-03-20 13:34:04 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 13:34:05 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 13:34:05 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 13:34:05 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 13:34:07 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 13:34:07 - ERROR - [logger.py:57] - Необработанная ошибка: 'FromDishka' object has no attribute 'email' | path=/api/private/users/me
+2025-03-20 13:35:05 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 13:35:07 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 13:35:07 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 13:35:08 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 13:35:10 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 13:35:10 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 13:35:10 - WARNING - [logger.py:75] - Ошибка аутентификации через Dishka | error=Access token отсутствует в куки
+2025-03-20 13:40:17 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 13:44:59 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 13:44:59 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 13:44:59 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 13:45:03 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 13:45:03 - WARNING - [logger.py:75] - Ошибка аутентификации через Dishka | error='NoneType' object has no attribute 'get'
+2025-03-20 13:45:03 - ERROR - [logger.py:57] - Ошибка аутентификации: 'NoneType' object has no attribute 'get' | path=/api/private/users/me
+2025-03-20 13:48:07 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 14:08:10 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 14:08:10 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 14:08:12 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 14:08:17 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user12@example.com
+2025-03-20 14:08:17 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user12@example.com
+2025-03-20 14:08:20 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:08:20 - WARNING - [logger.py:75] - Ошибка аутентификации | error='NoneType' object has no attribute 'get'
+2025-03-20 14:08:20 - ERROR - [logger.py:57] - Ошибка аутентификации: 'NoneType' object has no attribute 'get' | path=/api/private/users/me
+2025-03-20 14:08:21 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:08:21 - WARNING - [logger.py:75] - Ошибка аутентификации | error='NoneType' object has no attribute 'get'
+2025-03-20 14:08:21 - ERROR - [logger.py:57] - Ошибка аутентификации: 'NoneType' object has no attribute 'get' | path=/api/private/users/me
+2025-03-20 14:08:22 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:08:22 - WARNING - [logger.py:75] - Ошибка аутентификации | error='NoneType' object has no attribute 'get'
+2025-03-20 14:08:22 - ERROR - [logger.py:57] - Ошибка аутентификации: 'NoneType' object has no attribute 'get' | path=/api/private/users/me
+2025-03-20 14:08:23 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:08:23 - WARNING - [logger.py:75] - Ошибка аутентификации | error='NoneType' object has no attribute 'get'
+2025-03-20 14:08:23 - ERROR - [logger.py:57] - Ошибка аутентификации: 'NoneType' object has no attribute 'get' | path=/api/private/users/me
+2025-03-20 14:08:23 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:08:23 - WARNING - [logger.py:75] - Ошибка аутентификации | error='NoneType' object has no attribute 'get'
+2025-03-20 14:08:23 - ERROR - [logger.py:57] - Ошибка аутентификации: 'NoneType' object has no attribute 'get' | path=/api/private/users/me
+2025-03-20 14:12:03 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 14:13:15 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 14:13:15 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 14:13:15 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 14:13:22 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user12@example.com
+2025-03-20 14:13:23 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user12@example.com
+2025-03-20 14:13:28 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:13:28 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope.
+2025-03-20 14:13:28 - ERROR - [logger.py:57] - Ошибка аутентификации: Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope. | path=/api/private/users/me
+2025-03-20 14:19:59 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 14:20:00 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 14:20:00 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 14:20:01 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 14:20:04 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:20:04 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope.
+2025-03-20 14:20:04 - ERROR - [logger.py:57] - Ошибка аутентификации: Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope. | path=/api/private/users/me
+2025-03-20 14:20:05 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:20:05 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope.
+2025-03-20 14:20:05 - ERROR - [logger.py:57] - Ошибка аутентификации: Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope. | path=/api/private/users/me
+2025-03-20 14:20:51 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 14:21:48 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 14:21:48 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 14:21:48 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 14:21:50 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:21:50 - INFO - [logger.py:66] - Пользователь успешно аутентифицирован | email=user12@example.com
+2025-03-20 14:21:50 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user12@example.com
+2025-03-20 14:21:53 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:21:53 - INFO - [logger.py:66] - Пользователь успешно аутентифицирован | email=user12@example.com
+2025-03-20 14:21:53 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user12@example.com
+2025-03-20 14:22:09 - INFO - [logger.py:66] - Получен refresh-токен из cookie
+2025-03-20 14:22:09 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-20 14:22:09 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-20 14:22:14 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:22:14 - INFO - [logger.py:66] - Пользователь успешно аутентифицирован | email=user12@example.com
+2025-03-20 14:22:14 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user12@example.com
+2025-03-20 14:22:27 - INFO - [logger.py:66] - Получен refresh-токен из cookie
+2025-03-20 14:22:27 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-20 14:22:27 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-20 14:22:27 - INFO - [logger.py:66] - Получен refresh-токен из cookie
+2025-03-20 14:22:27 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-20 14:22:27 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-20 14:23:10 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 14:23:12 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 14:23:12 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 14:23:12 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 14:23:20 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:23:20 - INFO - [logger.py:66] - Пользователь успешно аутентифицирован | email=user12@example.com
+2025-03-20 14:23:20 - INFO - [logger.py:66] - Получен refresh-токен из cookie
+2025-03-20 14:23:20 - INFO - [logger.py:66] - Получен запрос на выход из системы | email=user12@example.com
+2025-03-20 14:23:20 - INFO - [logger.py:66] - Пользователь успешно вышел из системы | email=user12@example.com
+2025-03-20 14:23:25 - INFO - [logger.py:66] - Запрос проверки работоспособности API
+2025-03-20 14:23:37 - INFO - [logger.py:66] - Регистрация нового пользователя с email: user15@example.com
+2025-03-20 14:23:37 - INFO - [logger.py:66] - Пользователь с email user15@example.com успешно зарегистрирован
+2025-03-20 14:23:49 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user15@example.com
+2025-03-20 14:23:50 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user15@example.com
+2025-03-20 14:23:55 - INFO - [logger.py:66] - Получен refresh-токен из cookie
+2025-03-20 14:23:55 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-20 14:23:55 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-20 14:24:01 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:24:01 - INFO - [logger.py:66] - Пользователь успешно аутентифицирован | email=user15@example.com
+2025-03-20 14:24:01 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user15@example.com
+2025-03-20 14:24:07 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:24:07 - INFO - [logger.py:66] - Пользователь успешно аутентифицирован | email=user15@example.com
+2025-03-20 14:24:07 - INFO - [logger.py:66] - Получен refresh-токен из cookie
+2025-03-20 14:24:07 - INFO - [logger.py:66] - Получен запрос на выход из системы | email=user15@example.com
+2025-03-20 14:24:07 - INFO - [logger.py:66] - Пользователь успешно вышел из системы | email=user15@example.com
+2025-03-20 14:24:11 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 14:34:21 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 14:34:21 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 14:34:21 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 14:34:25 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user15@example.com
+2025-03-20 14:34:25 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user15@example.com
+2025-03-20 14:34:29 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:34:29 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope.
+2025-03-20 14:34:29 - ERROR - [logger.py:57] - Ошибка аутентификации: Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope. | path=/api/private/users/me
+2025-03-20 14:35:03 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 14:35:04 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 14:35:04 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 14:35:04 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 14:35:09 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:35:09 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope.
+2025-03-20 14:35:09 - ERROR - [logger.py:57] - Ошибка аутентификации: Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope. | path=/api/private/users/me
+2025-03-20 14:35:16 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user@example.com
+2025-03-20 14:35:17 - ERROR - [logger.py:57] - Ошибка при авторизации: Неверный email или пароль | email=user@example.com
+2025-03-20 14:35:17 - ERROR - [logger.py:57] - Ошибка аутентификации: Неверный email или пароль | path=/api/public/auth/login
+2025-03-20 14:35:36 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user12@example.com
+2025-03-20 14:35:36 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user12@example.com
+2025-03-20 14:35:41 - INFO - [logger.py:66] - Получен refresh-токен из cookie
+2025-03-20 14:35:41 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-20 14:35:41 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-20 14:35:46 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:35:46 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope.
+2025-03-20 14:35:46 - ERROR - [logger.py:57] - Ошибка аутентификации: Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope. | path=/api/private/users/me
+2025-03-20 14:35:47 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:35:47 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope.
+2025-03-20 14:35:47 - ERROR - [logger.py:57] - Ошибка аутентификации: Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope. | path=/api/private/users/me
+2025-03-20 14:35:52 - INFO - [logger.py:66] - Получен refresh-токен из cookie
+2025-03-20 14:35:52 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-20 14:35:52 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-20 14:36:25 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:36:25 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope.
+2025-03-20 14:36:25 - ERROR - [logger.py:57] - Ошибка аутентификации: Cannot find factory for (GetCurrentUserUseCase, component=''). Check scopes in your providers. It is missing or has invalid scope. | path=/api/private/auth/logout
+2025-03-20 14:36:29 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 14:42:24 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 14:42:24 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 14:42:24 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 14:42:29 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:42:30 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:42:31 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 14:43:30 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 15:28:04 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 15:28:04 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 15:28:04 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 15:28:06 - INFO - [logger.py:66] - Запрос проверки работоспособности API
+2025-03-20 15:28:09 - INFO - [logger.py:66] - Запрос проверки работоспособности API
+2025-03-20 15:28:19 - INFO - [logger.py:66] - Регистрация нового пользователя с email: user20@example.com
+2025-03-20 15:28:19 - INFO - [logger.py:66] - Пользователь с email user20@example.com успешно зарегистрирован
+2025-03-20 15:28:27 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user20@example.com
+2025-03-20 15:28:27 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user20@example.com
+2025-03-20 15:28:32 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 15:28:32 - WARNING - [logger.py:75] - Функция refresh_token_from_cookie вызвана напрямую!
+2025-03-20 15:28:32 - WARNING - [logger.py:75] - Ошибка аутентификации | error=Access token отсутствует в куки
+2025-03-20 15:41:23 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 15:41:41 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 15:41:41 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 15:41:41 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 15:41:49 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 15:55:05 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 15:55:05 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 15:55:05 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 15:55:23 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user20@example.com
+2025-03-20 15:55:23 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user20@example.com
+2025-03-20 15:55:28 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 15:55:28 - INFO - [logger.py:66] - Пользователь успешно аутентифицирован | email=user20@example.com
+2025-03-20 15:55:28 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 15:57:45 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 15:57:47 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 15:57:47 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 15:57:47 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 15:57:58 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 15:57:58 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 15:57:59 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 15:57:59 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 15:58:00 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 15:58:00 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 15:58:00 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 15:58:00 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 15:58:00 - INFO - [logger.py:66] - Получен токен доступа из cookie
+2025-03-20 15:58:00 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 15:58:46 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 15:59:11 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 15:59:11 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 15:59:11 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 15:59:17 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 15:59:19 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 15:59:19 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 15:59:23 - INFO - [logger.py:66] - Получен refresh-токен из cookie
+2025-03-20 15:59:23 - INFO - [logger.py:66] - Получен запрос на выход из системы | email=user20@example.com
+2025-03-20 15:59:23 - INFO - [logger.py:66] - Пользователь успешно вышел из системы | email=user20@example.com
+2025-03-20 15:59:28 - ERROR - [logger.py:57] - Необработанная ошибка: Ошибка при декодировании токена: 'NoneType' object has no attribute 'startswith' | path=/api/private/users/me
+2025-03-20 16:05:43 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 16:36:42 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 16:36:42 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 16:36:42 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 16:38:50 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 16:38:51 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 16:38:51 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 16:38:51 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 16:39:02 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user20@example.com
+2025-03-20 16:39:02 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user20@example.com
+2025-03-20 16:39:06 - ERROR - [logger.py:57] - Необработанная ошибка: GetCurrentUserUseCase.execute() got an unexpected keyword argument 'token' | path=/api/private/users/me
+2025-03-20 16:39:07 - ERROR - [logger.py:57] - Необработанная ошибка: GetCurrentUserUseCase.execute() got an unexpected keyword argument 'token' | path=/api/private/users/me
+2025-03-20 16:39:08 - ERROR - [logger.py:57] - Необработанная ошибка: GetCurrentUserUseCase.execute() got an unexpected keyword argument 'token' | path=/api/private/users/me
+2025-03-20 16:39:08 - ERROR - [logger.py:57] - Необработанная ошибка: GetCurrentUserUseCase.execute() got an unexpected keyword argument 'token' | path=/api/private/users/me
+2025-03-20 16:40:57 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 16:40:58 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 16:40:58 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 16:40:58 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 16:41:03 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 16:41:04 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 16:41:05 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 16:41:05 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 16:41:05 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 16:41:10 - ERROR - [logger.py:57] - Необработанная ошибка: RefreshTokenUseCase.__init__() takes 3 positional arguments but 4 were given | path=/api/public/auth/refresh
+2025-03-20 16:42:04 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 16:42:06 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 16:42:06 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 16:42:06 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 16:42:09 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-20 16:42:09 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-20 16:42:20 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 16:42:24 - INFO - [logger.py:66] - Получен запрос на выход из системы | email=user20@example.com
+2025-03-20 16:42:24 - INFO - [logger.py:66] - Пользователь успешно вышел из системы | email=user20@example.com
+2025-03-20 16:42:30 - ERROR - [logger.py:57] - Ошибка аутентификации: Рефреш токен не найден | path=/api/private/users/me
+2025-03-20 16:42:34 - ERROR - [logger.py:57] - Ошибка аутентификации: Рефреш токен не найден | path=/api/private/users/me
+2025-03-20 16:42:35 - ERROR - [logger.py:57] - Ошибка аутентификации: Рефреш токен не найден | path=/api/private/users/me
+2025-03-20 16:42:36 - ERROR - [logger.py:57] - Ошибка аутентификации: Рефреш токен не найден | path=/api/private/users/me
+2025-03-20 16:42:37 - ERROR - [logger.py:57] - Ошибка аутентификации: Рефреш токен не найден | path=/api/private/users/me
+2025-03-20 16:42:45 - ERROR - [logger.py:57] - Ошибка аутентификации: Рефреш токен не найден | path=/api/private/users/me
+2025-03-20 16:42:46 - ERROR - [logger.py:57] - Ошибка аутентификации: Рефреш токен не найден | path=/api/private/users/me
+2025-03-20 16:42:47 - ERROR - [logger.py:57] - Ошибка аутентификации: Рефреш токен не найден | path=/api/private/users/me
+2025-03-20 16:46:36 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 16:46:38 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 16:46:38 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 16:46:38 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 16:46:41 - ERROR - [logger.py:57] - Ошибка аутентификации: Ошибка при декодировании токена: Access токен не найден | path=/api/private/users/me
+2025-03-20 16:47:38 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 16:47:39 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 16:47:39 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 16:47:39 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 16:47:42 - ERROR - [logger.py:57] - Ошибка аутентификации: Ошибка при декодировании токена: 'NoneType' object has no attribute 'startswith' | path=/api/private/users/me
+2025-03-20 16:48:19 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 17:00:19 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 17:00:19 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 17:00:19 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 17:00:29 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-20 17:09:24 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-20 17:09:24 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-20 17:09:24 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-20 17:09:31 - ERROR - [logger.py:57] - Ошибка аутентификации: Ошибка при декодировании токена: Access токен не найден | path=/api/private/users/me
+2025-03-20 17:09:37 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user20@example.com
+2025-03-20 17:09:37 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user20@example.com
+2025-03-20 17:09:42 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 17:09:43 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 17:09:43 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 17:09:47 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-20 17:09:47 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-20 17:09:49 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-20 17:09:49 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-20 17:09:50 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-20 17:09:50 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-20 17:09:54 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user20@example.com
+2025-03-20 17:10:24 - INFO - [logger.py:66] - Получен запрос на выход из системы | email=user20@example.com
+2025-03-20 17:10:24 - INFO - [logger.py:66] - Пользователь успешно вышел из системы | email=user20@example.com
+2025-03-20 17:10:30 - INFO - [logger.py:66] - Запрос проверки работоспособности API
+2025-03-20 17:10:36 - INFO - [logger.py:66] - Приложение остановлено

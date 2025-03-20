@@ -1,23 +1,46 @@
 """Главный файл приложения."""
 
+from contextlib import asynccontextmanager
+
+from dishka.integrations.fastapi import setup_dishka
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 
 from app.infrastructure.config.settings import get_settings
 from app.infrastructure.database.session import create_tables
+from app.infrastructure.di.container import container
 from app.infrastructure.logging.logger import log_info
 from app.presentation.api.router import api_private_router, api_public_router
 from app.presentation.exception_handlers import register_exception_handlers
 
 settings = get_settings()
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Менеджер контекста для жизненного цикла приложения."""
+    # Startup
+    log_info("Приложение запущено", environment=settings.ENVIRONMENT)
+    # Создаем таблицы в базе данных
+    await create_tables()
+    yield
+    # Shutdown
+    if container:
+        await container.close()
+    log_info("Приложение остановлено")
+
+
 # Создаем приложение FastAPI
 app = FastAPI(
     title="User Management API",
     description="API для управления пользователями",
     version="1.0.0",
+    lifespan=lifespan,
 )
+
+# Настраиваем Dishka для FastAPI
+setup_dishka(container, app)
 
 # Добавляем CORS middleware
 app.add_middleware(
@@ -73,17 +96,3 @@ async def health_check():
     """Проверка работоспособности API."""
     log_info("Запрос проверки работоспособности API")
     return {"status": "ok", "message": "API работает"}
-
-
-@app.on_event("startup")
-async def startup():
-    """Действия при запуске приложения."""
-    log_info("Приложение запущено", environment=settings.ENVIRONMENT)
-    # Создаем таблицы в базе данных
-    await create_tables()
-
-
-@app.on_event("shutdown")
-async def shutdown():
-    """Действия при остановке приложения."""
-    log_info("Приложение остановлено")

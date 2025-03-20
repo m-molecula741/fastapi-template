@@ -15,7 +15,7 @@ from app.domain.exceptions import RefreshTokenException
 async def test_refresh_token_success(mock_uow, mock_token_service, mock_user_entity):
     """Тест успешного обновления токена."""
     # Arrange
-    refresh_token = "valid_refresh_token"
+    refresh_token = UUID("11111111-1111-1111-1111-111111111111")
     user_email = "test@example.com"
 
     # Создаем мок сессии
@@ -33,17 +33,17 @@ async def test_refresh_token_success(mock_uow, mock_token_service, mock_user_ent
 
     # Настраиваем моки для новых токенов
     new_access_token = "new_access_token"
-    new_refresh_token = "new_refresh_token"
+    new_refresh_token = UUID("44444444-4444-4444-4444-444444444444")
     new_expires_at = datetime.now(UTC) + timedelta(days=14)
 
     mock_token_service.generate_access_token.return_value = new_access_token
     mock_token_service.generate_refresh_token.return_value = new_refresh_token
     mock_token_service.get_refresh_token_expires_at.return_value = new_expires_at
 
-    usecase = RefreshTokenUseCase(mock_uow, mock_token_service)
+    usecase = RefreshTokenUseCase(mock_uow, mock_token_service, refresh_token)
 
     # Act
-    result = await usecase.execute(refresh_token)
+    result = await usecase.execute()
 
     # Assert
     assert isinstance(result, TokenDTO)
@@ -66,15 +66,15 @@ async def test_refresh_token_success(mock_uow, mock_token_service, mock_user_ent
 async def test_refresh_token_not_found(mock_uow, mock_token_service):
     """Тест обновления с несуществующим токеном."""
     # Arrange
-    refresh_token = "nonexistent_refresh_token"
+    refresh_token = UUID("22222222-2222-2222-2222-222222222222")
 
     mock_uow.auth_sessions.find_by_refresh_token.return_value = None
 
-    usecase = RefreshTokenUseCase(mock_uow, mock_token_service)
+    usecase = RefreshTokenUseCase(mock_uow, mock_token_service, refresh_token)
 
     # Act & Assert
     with pytest.raises(RefreshTokenException) as exc_info:
-        await usecase.execute(refresh_token)
+        await usecase.execute()
 
     assert "Недействительный refresh token" in str(exc_info.value)
     mock_uow.auth_sessions.find_by_refresh_token.assert_called_once_with(refresh_token)
@@ -85,7 +85,7 @@ async def test_refresh_token_not_found(mock_uow, mock_token_service):
 async def test_refresh_token_expired(mock_uow, mock_token_service):
     """Тест обновления с истекшим токеном."""
     # Arrange
-    refresh_token = "expired_refresh_token"
+    refresh_token = UUID("33333333-3333-3333-3333-333333333333")
     user_email = "test@example.com"
 
     # Создаем мок сессии с истекшим сроком действия
@@ -100,11 +100,11 @@ async def test_refresh_token_expired(mock_uow, mock_token_service):
 
     mock_uow.auth_sessions.find_by_refresh_token.return_value = session
 
-    usecase = RefreshTokenUseCase(mock_uow, mock_token_service)
+    usecase = RefreshTokenUseCase(mock_uow, mock_token_service, refresh_token)
 
     # Act & Assert
     with pytest.raises(RefreshTokenException) as exc_info:
-        await usecase.execute(refresh_token)
+        await usecase.execute()
 
     assert "Срок действия refresh token истек" in str(exc_info.value)
     mock_uow.auth_sessions.find_by_refresh_token.assert_called_once_with(refresh_token)

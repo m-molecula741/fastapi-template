@@ -7,11 +7,16 @@ import pytest
 
 from app.application.use_cases.auth.login import LoginUseCase
 from app.domain.dto.auth import LoginDTO, TokenDTO
+from app.domain.entities.user import User
 from app.domain.exceptions import AuthenticationException
+from app.domain.interfaces.token_service import ITokenService
+from app.domain.interfaces.uow import IUOW
 
 
-@pytest.mark.asyncio(loop_scope="function")
-async def test_login_success(mock_uow, mock_token_service, mock_user_entity):
+@pytest.mark.asyncio
+async def test_login_success(
+    mock_uow: IUOW, mock_token_service: ITokenService, mock_user_entity: User
+):
     """Тест успешного логина пользователя."""
     # Arrange
     login_dto = LoginDTO(email="test@example.com", password="password123")
@@ -39,8 +44,8 @@ async def test_login_success(mock_uow, mock_token_service, mock_user_entity):
     mock_uow.auth_sessions.add.assert_called_once()
 
 
-@pytest.mark.asyncio(loop_scope="function")
-async def test_login_user_not_found(mock_uow, mock_token_service):
+@pytest.mark.asyncio
+async def test_login_user_not_found(mock_uow: IUOW, mock_token_service: ITokenService):
     """Тест логина с несуществующим пользователем."""
     # Arrange
     login_dto = LoginDTO(email="nonexistent@example.com", password="password123")
@@ -57,8 +62,10 @@ async def test_login_user_not_found(mock_uow, mock_token_service):
     mock_uow.users.find_by_email.assert_called_once_with(login_dto.email)
 
 
-@pytest.mark.asyncio(loop_scope="function")
-async def test_login_wrong_password(mock_uow, mock_token_service, mock_user_entity):
+@pytest.mark.asyncio
+async def test_login_wrong_password(
+    mock_uow: IUOW, mock_token_service: ITokenService, mock_user_entity: User
+):
     """Тест логина с неверным паролем."""
     # Arrange
     login_dto = LoginDTO(email="test@example.com", password="wrong_password")

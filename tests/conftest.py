@@ -3,6 +3,7 @@
 import logging
 from datetime import UTC, datetime, timedelta
 from unittest.mock import AsyncMock, MagicMock
+from uuid import UUID
 
 import pytest
 
@@ -26,7 +27,6 @@ def mock_uow() -> MagicMock:
     """Создает мок для Unit of Work."""
     uow = MagicMock(spec=IUOW)
 
-    # Создаем специальный мок для __aexit__, который вызывает commit
     async def async_exit(exc_type=None, exc_val=None, exc_tb=None):
         if exc_type is None:
             await uow.commit()
@@ -59,12 +59,14 @@ def mock_token_service() -> MagicMock:
     """Создает мок для сервиса токенов."""
     service = MagicMock(spec=ITokenService)
     service.generate_access_token = MagicMock(return_value="mock_access_token")
-    service.generate_refresh_token = MagicMock(return_value="mock_refresh_token")
+    mock_uuid = UUID("00000000-0000-0000-0000-000000000000")
+    service.generate_refresh_token = MagicMock(return_value=mock_uuid)
     service.get_refresh_token_expires_at = MagicMock(
         return_value=datetime.now(UTC) + timedelta(days=7)
     )
     service.verify_access_token = MagicMock()
     service.get_user_email_from_token = MagicMock()
+    service.decode_access_token = MagicMock(return_value={"sub": "test@example.com"})
 
     return service
 
@@ -100,6 +102,6 @@ def mock_tokens() -> TokenDTO:
     """Создает мок токенов."""
     return TokenDTO(
         access_token="mock_access_token",
-        refresh_token="mock_refresh_token",
+        refresh_token=UUID("00000000-0000-0000-0000-000000000000"),
         expires_at=datetime.now(UTC) + timedelta(days=7),
     )
