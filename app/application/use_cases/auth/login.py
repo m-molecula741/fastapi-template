@@ -4,8 +4,7 @@ from datetime import UTC, datetime
 
 from uuid_extensions import uuid7
 
-from app.domain.dto.auth import LoginDTO, TokenDTO
-from app.domain.entities.auth import AuthSession
+from app.domain.entities.auth import AuthSession, Token
 from app.domain.exceptions import AuthenticationException
 from app.domain.interfaces.token_service import ITokenService
 from app.domain.interfaces.uow import IUOW
@@ -19,11 +18,11 @@ class LoginUseCase:
         self.uow = uow
         self.token_service = token_service
 
-    async def execute(self, login_data: LoginDTO) -> TokenDTO:
+    async def execute(self, email: str, password: str) -> Token:
         """Авторизует пользователя и возвращает токены."""
         async with self.uow:
-            user = await self.uow.users.find_by_email(login_data.email)
-            if not user or not user.verify_password(login_data.password):
+            user = await self.uow.users.find_by_email(email)
+            if not user or not user.verify_password(password):
                 raise AuthenticationException(message="Неверный email или пароль")
 
             access_token = self.token_service.generate_access_token(user.email)
@@ -40,8 +39,7 @@ class LoginUseCase:
 
             await self.uow.auth_sessions.add(auth_session)
 
-            return TokenDTO(
+            return Token(
                 access_token=access_token,
                 refresh_token=refresh_token,
-                expires_at=expires_at,
             )

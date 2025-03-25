@@ -1,46 +1,24 @@
 """Доменная модель пользователя."""
 
-from datetime import datetime
+from dataclasses import dataclass
+from datetime import UTC, datetime
 
 from passlib.context import CryptContext
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
+@dataclass
 class User:
     """Доменная модель пользователя."""
 
-    def __init__(
-        self,
-        email: str,
-        hashed_password: str,
-        is_active: bool = True,
-        is_verified: bool = False,
-        created_at: datetime | None = None,
-        updated_at: datetime | None = None,
-    ):
-        """Инициализирует пользователя."""
-        self.email = email
-        self.hashed_password = hashed_password
-        self.is_active = is_active
-        self.is_verified = is_verified
-        self.created_at = created_at
-        self.updated_at = updated_at
+    email: str
+    hashed_password: str
+    is_active: bool = True
+    is_verified: bool = False
+    created_at: datetime | None = datetime.now(UTC)
+    updated_at: datetime | None = None
 
     def verify_password(self, plain_password: str) -> bool:
-        """Проверяет, совпадает ли переданный пароль с хэшированным паролем.
-
-        Сравнивает пароль в открытом виде с хэшированным паролем пользователя.
-        """
+        """Проверяет, совпадает ли переданный пароль с хэшированным паролем."""
         return pwd_context.verify(plain_password, self.hashed_password)
-
-    def to_dict(self):
-        """Преобразует пользователя в словарь."""
-        return {
-            "email": self.email,
-            "hashed_password": self.hashed_password,
-            "is_active": self.is_active,
-            "is_verified": self.is_verified,
-            "created_at": self.created_at,
-            "updated_at": self.updated_at,
-        }

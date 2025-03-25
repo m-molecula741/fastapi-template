@@ -1,5 +1,7 @@
 """SQL реализация репозитория пользователей."""
 
+from dataclasses import asdict
+
 from sqlalchemy import insert, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -34,7 +36,7 @@ class UserRepository(IUserRepository):
     async def create_user(self, user: User) -> str:
         """Создает пользователя в базе данных и возвращает первичный ключ (email)."""
         result = await self.session.execute(
-            insert(UserModel).values(**user.to_dict()).returning(UserModel.email)
+            insert(UserModel).values(**asdict(user)).returning(UserModel.email)
         )
         email = result.scalar_one()
 

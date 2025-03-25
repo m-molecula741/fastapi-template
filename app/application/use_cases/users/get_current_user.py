@@ -1,6 +1,6 @@
 """Получение текущего пользователя."""
 
-from app.domain.dto.user import UserDTO
+from app.domain.entities.user import User
 from app.domain.exceptions import AuthenticationException
 from app.domain.interfaces.token_service import ITokenService
 from app.domain.interfaces.uow import IUOW
@@ -14,7 +14,7 @@ class GetCurrentUserUseCase:
         self.token_service = token_service
         self.token = token
 
-    async def execute(self) -> UserDTO:
+    async def execute(self) -> User:
         """Возвращает текущего пользователя."""
         try:
             if not self.token or self.token == "":
@@ -31,4 +31,4 @@ class GetCurrentUserUseCase:
         if not current_user:
             raise AuthenticationException("Пользователь не найден")
 
-        return UserDTO.from_domain(current_user)
+        return current_user

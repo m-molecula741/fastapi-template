@@ -4,7 +4,7 @@ from dishka.integrations.fastapi import FromDishka, inject
 from fastapi import APIRouter, Response, status
 
 from app.application.use_cases.auth.logout import LogoutUseCase
-from app.domain.dto.user import UserDTO
+from app.domain.entities.user import User
 from app.domain.exceptions import AuthenticationException
 from app.infrastructure.logging.logger import log_error, log_info
 
@@ -16,7 +16,7 @@ router = APIRouter()
 async def logout(
     response: Response,
     logout_usecase: FromDishka[LogoutUseCase],
-    current_user: FromDishka[UserDTO]
+    current_user: FromDishka[User],
 ) -> None:
     """Выполняет выход пользователя из системы."""
     log_info("Получен запрос на выход из системы", email=current_user.email)

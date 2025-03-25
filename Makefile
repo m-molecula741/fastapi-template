@@ -66,4 +66,5 @@ lint:
 format:
 	@echo "Форматирование кода"
 	ruff format app tests
-	black app tests 
+	ruff check --fix app tests --select I001
+	black app tests

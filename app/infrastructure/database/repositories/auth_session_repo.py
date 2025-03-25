@@ -1,5 +1,6 @@
 """SQLAlchemy реализация репозитория авторизационных сессий."""
 
+from dataclasses import asdict
 from datetime import datetime
 from uuid import UUID
 
@@ -20,7 +21,7 @@ class AuthSessionRepository(IAuthSessionRepository):
     async def add(self, auth_session: AuthSession) -> None:
         """Добавляет новую авторизационную сессию."""
         await self.session.execute(
-            insert(AuthSessionModel).values(**auth_session.to_dict())
+            insert(AuthSessionModel).values(**asdict(auth_session))
         )
 
     async def find_by_refresh_token(self, refresh_token: UUID) -> AuthSession | None:
