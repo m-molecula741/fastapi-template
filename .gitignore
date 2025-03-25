@@ -13,3 +13,8 @@ wheels/
 .vscode/
 
 .env
+.__pycache__
+.DS_Store
+.ruff_cache
+.mypy_cache
+.pytest_cache
