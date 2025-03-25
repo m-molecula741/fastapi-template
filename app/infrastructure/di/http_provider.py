@@ -1,8 +1,7 @@
-
 from dishka import FromDishka, Provider, Scope, provide
 
 from app.application.use_cases.users.get_current_user import GetCurrentUserUseCase
-from app.domain.dto.user import UserDTO
+from app.domain.entities.user import User
 
 
 class HTTPProvider(Provider):
@@ -16,7 +15,7 @@ class HTTPProvider(Provider):
     async def current_user(
         self,
         get_current_user_usecase: FromDishka[GetCurrentUserUseCase],
-    ) -> UserDTO:
+    ) -> User:
         """Получает текущего пользователя."""
         user = await get_current_user_usecase.execute()
         return user

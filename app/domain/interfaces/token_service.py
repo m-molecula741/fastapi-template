@@ -2,6 +2,7 @@
 
 from abc import ABC, abstractmethod
 from datetime import datetime
+from uuid import UUID
 
 
 class ITokenService(ABC):
@@ -18,7 +19,7 @@ class ITokenService(ABC):
         pass
 
     @abstractmethod
-    def generate_refresh_token(self) -> str:
+    def generate_refresh_token(self) -> UUID:
         """Генерирует refresh token."""
         pass
 

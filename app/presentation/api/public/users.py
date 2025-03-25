@@ -20,7 +20,7 @@ async def create_user(
 ) -> UserCreateResp:
     """Создает нового пользователя."""
     try:
-        user_email = await register_usecase.execute(user_data.to_dto())
+        user_email = await register_usecase.execute(user_data.to_domain())
         return UserCreateResp(email=user_email)
     except ValueError as e:
         logger.error(f"Ошибка при создании пользователя: {str(e)}")

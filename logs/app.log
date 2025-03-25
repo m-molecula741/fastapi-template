@@ -517,3 +517,116 @@
 2025-03-20 17:10:24 - INFO - [logger.py:66] - Пользователь успешно вышел из системы | email=user20@example.com
 2025-03-20 17:10:30 - INFO - [logger.py:66] - Запрос проверки работоспособности API
 2025-03-20 17:10:36 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 14:17:27 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 14:17:27 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 14:17:27 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 14:17:33 - ERROR - [logger.py:57] - Необработанная ошибка: User.__init__() got an unexpected keyword argument 'password' | path=/api/public/users/register
+2025-03-25 14:17:45 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 14:18:45 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 14:18:45 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 14:18:45 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 14:18:47 - INFO - [logger.py:66] - Регистрация нового пользователя с email: user2@example.com
+2025-03-25 14:18:47 - ERROR - [logger.py:57] - Необработанная ошибка: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "created_at" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (user2@example.com, $2b$12$cd3BmgAY6ZFwJv/NDzXgVe/3AjSnT242/vgKApJbTlhimW7PdCCjy, t, f, null, null).
+[SQL: INSERT INTO users (email, hashed_password, is_active, is_verified, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::BOOLEAN, $4::BOOLEAN, $5::TIMESTAMP WITH TIME ZONE, $6::TIMESTAMP WITH TIME ZONE) RETURNING users.email]
+[parameters: ('user2@example.com', '$2b$12$cd3BmgAY6ZFwJv/NDzXgVe/3AjSnT242/vgKApJbTlhimW7PdCCjy', True, False, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) | path=/api/public/users/register
+2025-03-25 14:20:38 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 14:20:40 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 14:20:40 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 14:20:40 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 14:20:42 - INFO - [logger.py:66] - Регистрация нового пользователя с email: user2@example.com
+2025-03-25 14:20:42 - ERROR - [logger.py:57] - Необработанная ошибка: (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.DataError'>: invalid input for query argument $5: (datetime.datetime(2025, 3, 25, 11, 20, ... (expected a datetime.date or datetime.datetime instance, got 'tuple')
+[SQL: INSERT INTO users (email, hashed_password, is_active, is_verified, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::BOOLEAN, $4::BOOLEAN, $5::TIMESTAMP WITH TIME ZONE, $6::TIMESTAMP WITH TIME ZONE) RETURNING users.email]
+[parameters: ('user2@example.com', '$2b$12$G9J75H/gBY6UsbrlrmFkHOxNmx320eV5t7QhR1zNOe7x8Mo8.8Nqu', True, False, (datetime.datetime(2025, 3, 25, 11, 20, 40, 444267, tzinfo=datetime.timezone.utc),), None)]
+(Background on this error at: https://sqlalche.me/e/20/dbapi) | path=/api/public/users/register
+2025-03-25 14:23:11 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 14:23:12 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 14:23:12 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 14:23:12 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 14:23:16 - INFO - [logger.py:66] - Регистрация нового пользователя с email: user2@example.com
+2025-03-25 14:23:16 - INFO - [logger.py:66] - Пользователь с email user2@example.com успешно зарегистрирован
+2025-03-25 14:40:14 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 14:40:15 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 14:40:15 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 14:40:15 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 14:40:34 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user2@example.com
+2025-03-25 14:40:34 - ERROR - [logger.py:57] - Ошибка при авторизации: Token.__init__() got an unexpected keyword argument 'expires_at' | email=user2@example.com
+2025-03-25 14:40:34 - ERROR - [logger.py:57] - Ошибка аутентификации: Token.__init__() got an unexpected keyword argument 'expires_at' | path=/api/public/auth/login
+2025-03-25 14:41:27 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 14:41:29 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 14:41:29 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 14:41:29 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 14:41:31 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user2@example.com
+2025-03-25 14:41:31 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user2@example.com
+2025-03-25 14:41:31 - ERROR - [logger.py:57] - Ошибка при авторизации: 'Token' object has no attribute 'dict' | email=user2@example.com
+2025-03-25 14:41:31 - ERROR - [logger.py:57] - Ошибка аутентификации: 'Token' object has no attribute 'dict' | path=/api/public/auth/login
+2025-03-25 14:43:31 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 14:43:32 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 14:43:32 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 14:43:32 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 14:43:34 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user2@example.com
+2025-03-25 14:43:35 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user2@example.com
+2025-03-25 14:54:53 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 14:54:55 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 14:54:55 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 14:54:55 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 14:55:08 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user@example.com
+2025-03-25 14:55:08 - ERROR - [logger.py:57] - Ошибка при авторизации: 'AuthSession' object has no attribute 'to_dict' | email=user@example.com
+2025-03-25 14:55:08 - ERROR - [logger.py:57] - Ошибка аутентификации: 'AuthSession' object has no attribute 'to_dict' | path=/api/public/auth/login
+2025-03-25 14:57:53 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 14:57:54 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 14:57:54 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 14:57:54 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 14:57:56 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user@example.com
+2025-03-25 14:57:57 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user@example.com
+2025-03-25 14:58:03 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-25 14:58:03 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-25 14:58:05 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-25 14:58:05 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-25 14:58:07 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 15:04:40 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 15:04:40 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 15:04:40 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 15:04:44 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-25 15:04:44 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-25 15:04:45 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-25 15:04:45 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-25 15:04:48 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-25 15:04:48 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-25 15:04:54 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user@example.com
+2025-03-25 15:04:54 - ERROR - [logger.py:57] - Необработанная ошибка: asdict() got an unexpected keyword argument 'exclude' | path=/api/private/users/me
+2025-03-25 15:07:32 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 15:07:33 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 15:07:33 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 15:07:33 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 15:07:37 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user@example.com
+2025-03-25 15:07:43 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 15:10:25 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 15:10:25 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 15:10:25 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 15:10:32 - INFO - [logger.py:66] - Получен запрос на авторизацию | email=user@example.com
+2025-03-25 15:10:32 - INFO - [logger.py:66] - Пользователь успешно авторизован | email=user@example.com
+2025-03-25 15:10:36 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-25 15:10:36 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-25 15:10:37 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-25 15:10:37 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-25 15:10:37 - INFO - [logger.py:66] - Получен запрос на обновление токена
+2025-03-25 15:10:37 - INFO - [logger.py:66] - Токены успешно обновлены
+2025-03-25 15:10:40 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user@example.com
+2025-03-25 15:10:41 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user@example.com
+2025-03-25 15:10:42 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user@example.com
+2025-03-25 15:10:42 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user@example.com
+2025-03-25 15:10:42 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user@example.com
+2025-03-25 15:10:42 - INFO - [logger.py:66] - Получен запрос на получение текущего пользователя | email=user@example.com
+2025-03-25 15:10:47 - INFO - [logger.py:66] - Получен запрос на выход из системы | email=user@example.com
+2025-03-25 15:10:47 - INFO - [logger.py:66] - Пользователь успешно вышел из системы | email=user@example.com
+2025-03-25 15:10:58 - INFO - [logger.py:66] - Регистрация нового пользователя с email: user3@example.com
+2025-03-25 15:10:58 - ERROR - [logger.py:57] - Необработанная ошибка: 'User' object has no attribute 'to_dict' | path=/api/public/users/register
+2025-03-25 15:11:45 - INFO - [logger.py:66] - Приложение остановлено
+2025-03-25 15:11:46 - INFO - [logger.py:66] - Приложение запущено | environment=development
+2025-03-25 15:11:46 - INFO - [session.py:43] - Начало создания таблиц в базе данных
+2025-03-25 15:11:47 - INFO - [session.py:46] - Таблицы успешно созданы
+2025-03-25 15:11:49 - INFO - [logger.py:66] - Регистрация нового пользователя с email: user3@example.com
+2025-03-25 15:11:49 - INFO - [logger.py:66] - Пользователь с email user3@example.com успешно зарегистрирован
+2025-03-25 15:11:53 - INFO - [logger.py:66] - Приложение остановлено

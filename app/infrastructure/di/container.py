@@ -6,8 +6,5 @@ from app.infrastructure.di.http_provider import HTTPProvider
 from app.infrastructure.di.use_case_provider import UseCaseProvider
 
 container = make_async_container(
-    AppProvider(),
-    UseCaseProvider(),
-    HTTPProvider(),
-    FastapiProvider()
+    AppProvider(), UseCaseProvider(), HTTPProvider(), FastapiProvider()
 )

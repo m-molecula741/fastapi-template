@@ -35,8 +35,8 @@ class TokenService:
         return jwt.decode(token, self.secret_key, algorithms=[self.algorithm])
 
     def generate_refresh_token(self) -> UUID:
-        """Генерирует refresh token с использованием UUID7."""
-        return str(uuid7())
+        """Генерирует refresh token."""
+        return uuid7()
 
     def get_refresh_token_expires_at(self) -> datetime:
         """Возвращает срок действия refresh token."""

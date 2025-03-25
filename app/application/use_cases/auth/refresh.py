@@ -3,7 +3,7 @@
 from datetime import UTC, datetime
 from uuid import UUID
 
-from app.domain.dto.auth import TokenDTO
+from app.domain.entities.auth import Token
 from app.domain.exceptions import AuthenticationException, RefreshTokenException
 from app.domain.interfaces.token_service import ITokenService
 from app.domain.interfaces.uow import IUOW
@@ -22,7 +22,7 @@ class RefreshTokenUseCase:
         self.token_service = token_service
         self.refresh_token = refresh_token
 
-    async def execute(self) -> TokenDTO:
+    async def execute(self) -> Token:
         """Обновляет access-токен и refresh-токен."""
 
         async with self.uow:
@@ -49,8 +49,4 @@ class RefreshTokenUseCase:
                 auth_session.uuid, new_refresh_token, refresh_token_expires_at
             )
 
-            return TokenDTO(
-                access_token=access_token,
-                refresh_token=new_refresh_token,
-                expires_at=refresh_token_expires_at,
-            )
+            return Token(access_token=access_token, refresh_token=new_refresh_token)

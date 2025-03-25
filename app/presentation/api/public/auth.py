@@ -1,5 +1,7 @@
 """API для работы с авторизацией."""
 
+from dataclasses import asdict
+
 from dishka.integrations.fastapi import FromDishka, inject
 from fastapi import APIRouter, Response, status
 
@@ -25,8 +27,9 @@ async def login(
     log_info("Получен запрос на авторизацию", email=login_data.email)
 
     try:
-        login_dto = login_data.to_dto()
-        tokens = await login_usecase.execute(login_dto)
+        tokens = await login_usecase.execute(
+            email=login_data.email, password=login_data.password
+        )
 
         # Устанавливаем куки для токенов
         response.set_cookie(
@@ -39,7 +42,7 @@ async def login(
         )
         response.set_cookie(
             key="refresh_token",
-            value=tokens.refresh_token,
+            value=str(tokens.refresh_token),
             max_age=settings.REFRESH_TOKEN_EXPIRE_DAYS * 24 * 60 * 60,
             httponly=True,
             secure=settings.ENVIRONMENT == "production",
@@ -47,7 +50,7 @@ async def login(
         )
 
         log_info("Пользователь успешно авторизован", email=login_data.email)
-        return TokenResponse.from_dto(tokens)
+        return TokenResponse(**asdict(tokens))
     except Exception as e:
         log_error("Ошибка при авторизации", error=e, email=login_data.email)
         raise AuthenticationException(message=str(e)) from e
@@ -77,7 +80,7 @@ async def refresh(
         )
         response.set_cookie(
             key="refresh_token",
-            value=tokens.refresh_token,
+            value=str(tokens.refresh_token),
             max_age=settings.REFRESH_TOKEN_EXPIRE_DAYS * 24 * 60 * 60,
             httponly=True,
             secure=settings.ENVIRONMENT == "production",
@@ -85,7 +88,7 @@ async def refresh(
         )
 
         log_info("Токены успешно обновлены")
-        return TokenResponse.from_dto(tokens)
+        return TokenResponse(**asdict(tokens))
     except Exception as e:
         log_error("Ошибка при обновлении токенов", error=e)
         raise AuthenticationException(message=str(e)) from e

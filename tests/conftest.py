@@ -7,8 +7,7 @@ from uuid import UUID
 
 import pytest
 
-from app.domain.dto.auth import TokenDTO
-from app.domain.dto.user import UserDTO
+from app.domain.entities.auth import Token
 from app.domain.entities.user import User
 from app.domain.interfaces.token_service import ITokenService
 from app.domain.interfaces.uow import IUOW
@@ -72,10 +71,11 @@ def mock_token_service() -> MagicMock:
 
 
 @pytest.fixture
-def mock_user() -> UserDTO:
+def mock_user() -> User:
     """Создает мок пользователя."""
-    return UserDTO(
+    return User(
         email="test@example.com",
+        hashed_password="$2b$12$abc123hashvalue456",
         is_active=True,
         is_verified=True,
         created_at=datetime.now(UTC),
@@ -98,10 +98,9 @@ def mock_user_entity() -> User:
 
 
 @pytest.fixture
-def mock_tokens() -> TokenDTO:
+def mock_tokens() -> Token:
     """Создает мок токенов."""
-    return TokenDTO(
+    return Token(
         access_token="mock_access_token",
         refresh_token=UUID("00000000-0000-0000-0000-000000000000"),
-        expires_at=datetime.now(UTC) + timedelta(days=7),
     )

@@ -6,8 +6,7 @@ from uuid import UUID
 import pytest
 
 from app.application.use_cases.auth.refresh import RefreshTokenUseCase
-from app.domain.dto.auth import TokenDTO
-from app.domain.entities.auth import AuthSession
+from app.domain.entities.auth import AuthSession, Token
 from app.domain.exceptions import RefreshTokenException
 
 
@@ -46,10 +45,9 @@ async def test_refresh_token_success(mock_uow, mock_token_service, mock_user_ent
     result = await usecase.execute()
 
     # Assert
-    assert isinstance(result, TokenDTO)
+    assert isinstance(result, Token)
     assert result.access_token == new_access_token
     assert result.refresh_token == new_refresh_token
-    assert result.expires_at == new_expires_at
 
     mock_uow.auth_sessions.find_by_refresh_token.assert_called_once_with(refresh_token)
     mock_uow.users.find_by_email.assert_called_once_with(user_email)

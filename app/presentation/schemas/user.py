@@ -4,7 +4,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, EmailStr, Field
 
-from app.domain.dto.user import UserCreateDTO, UserDTO
+from app.domain.entities.user import User, pwd_context
 
 
 class UserCreate(BaseModel):
@@ -13,11 +13,11 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str = Field(..., min_length=8, max_length=100)
 
-    def to_dto(self) -> UserCreateDTO:
-        """Конвертирует схему в DTO."""
-        return UserCreateDTO(
+    def to_domain(self) -> User:
+        """Конвертирует схему в доменную модель."""
+        return User(
             email=self.email,
-            password=self.password,
+            hashed_password=pwd_context.hash(self.password),
         )
 
 
@@ -48,14 +48,3 @@ class UserResponse(UserBase):
     is_verified: bool
     created_at: datetime | None = None
     updated_at: datetime | None = None
-
-    @classmethod
-    def from_dto(cls, dto: UserDTO) -> "UserResponse":
-        """Создает экземпляр схемы из DTO."""
-        return cls(
-            email=dto.email,
-            is_active=dto.is_active,
-            is_verified=dto.is_verified,
-            created_at=dto.created_at,
-            updated_at=dto.updated_at,
-        )
