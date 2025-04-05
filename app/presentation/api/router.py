@@ -8,7 +8,7 @@ from app.presentation.api.public.auth import router as auth_router
 from app.presentation.api.public.users import router as users_router
 
 api_private_router = APIRouter(prefix="/api/private")
-api_public_router = APIRouter(prefix="/api/public")
+api_public_router = APIRouter(prefix="/api")
 
 
 api_public_router.include_router(users_router, prefix="/users", tags=["users"])

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Мой профиль{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title mb-0">Мой профиль</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="profile-img-container mb-3">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9IiNlOWVjZWYiLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iNDAiIGZpbGw9IiNhZGI1YmQiLz4KICA8cGF0aCBkPSJNMTYwIDE4MEMxNjAgMTQ3LjQ1IDEzMi41NSAxMjAgMTAwIDEyMEM2Ny40NSAxMjAgNDAgMTQ3LjQ1IDQwIDE4MEgxNjBaIiBmaWxsPSIjYWRiNWJkIi8+Cjwvc3ZnPg==" alt="Аватар" class="rounded-circle img-fluid" style="max-width: 150px;">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="profile-info">
+                            <h4 id="user-email">Загрузка...</h4>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Статус аккаунта:</label>
+                                        <div class="d-flex align-items-center">
+                                            <span id="account-status">Загрузка...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Дата регистрации:</label>
+                                        <div id="register-date">Загрузка...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Загрузка информации о пользователе
+        loadUserProfile();
+    });
+</script>
+{% endblock %} 

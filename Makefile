@@ -5,7 +5,7 @@
 # Переменные
 APP_MODULE = app.main:app
 PORT = 8000
-HOST = 0.0.0.0
+HOST = 127.0.0.1
 ALEMBIC = alembic
 
 # Запуск приложения
