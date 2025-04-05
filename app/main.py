@@ -1,11 +1,15 @@
 """Главный файл приложения."""
 
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from dishka.integrations.fastapi import setup_dishka
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
 from app.infrastructure.config.settings import get_settings
 from app.infrastructure.database.session import create_tables
@@ -13,8 +17,18 @@ from app.infrastructure.di.container import container
 from app.infrastructure.logging.logger import log_info
 from app.presentation.api.router import api_private_router, api_public_router
 from app.presentation.exception_handlers import register_exception_handlers
+from app.presentation.web.router import web_router
 
+# Получаем настройки приложения
 settings = get_settings()
+
+# Определяем базовые пути
+BASE_DIR = Path(__file__).resolve().parent
+TEMPLATES_DIR = BASE_DIR / "presentation" / "templates"
+STATIC_DIR = BASE_DIR / "presentation" / "static"
+
+# Создаем экземпляр шаблонизатора
+templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
 
 
 @asynccontextmanager
@@ -51,12 +65,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Регистрируем статические файлы
+app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+
 # Регистрируем обработчики исключений
 register_exception_handlers(app)
 
 # Регистрируем API роутеры
 app.include_router(api_public_router)
 app.include_router(api_private_router)
+
+# Регистрируем веб-роутеры для HTML страниц
+app.include_router(web_router)
 
 
 # Переопределяем схему OpenAPI для добавления security к приватным эндпоинтам
@@ -91,8 +111,8 @@ def custom_openapi():
 app.openapi = custom_openapi
 
 
-@app.get("/")
-async def health_check():
+@app.get("/health", response_class=HTMLResponse)
+async def health_check(request: Request):
     """Проверка работоспособности API."""
     log_info("Запрос проверки работоспособности API")
-    return {"status": "ok", "message": "API работает"}
+    return templates.TemplateResponse("index.html", {"request": request})

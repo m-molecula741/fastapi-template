@@ -146,6 +146,15 @@ wheels = [
 ]
 
 [[package]]
+name = "dishka"
+version = "1.5.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/07/41/0918b36dc20db62fb18f0543daffeba624f0c016a08313492c8367df8338/dishka-1.5.2.tar.gz", hash = "sha256:beae47f4450ad8db6fd3e6044a48c81ffea4b164adb1887b5d141494c4d507c8", size = 63474 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c5/6b/08f3b2233f77bbb53deacf11fde09356a859b61177854114d7b19fb50b21/dishka-1.5.2-py3-none-any.whl", hash = "sha256:fbd21fdc8de7f354643b25532d5cf9778b2bbee91887403f638a9bb437690cba", size = 88071 },
+]
+
+[[package]]
 name = "dnspython"
 version = "2.7.0"
 source = { registry = "https://pypi.org/simple" }
@@ -230,6 +239,18 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/f2/97/ebf4da567aa6827c909642694d71c9fcf53e5b504f2d96afea02718862f3/iniconfig-2.1.0.tar.gz", hash = "sha256:3abbd2e30b36733fee78f9c7f7308f2d0050e88f0087fd25c2645f63c773e1c7", size = 4793 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/2c/e1/e6716421ea10d38022b952c159d5161ca1193197fb744506875fbb87ea7b/iniconfig-2.1.0-py3-none-any.whl", hash = "sha256:9deba5723312380e77435581c6bf4935c94cbfab9b1ed33ef8d238ea168eb760", size = 6050 },
+]
+
+[[package]]
+name = "jinja2"
+version = "3.1.6"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "markupsafe" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/df/bf/f7da0350254c0ed7c72f3e33cef02e048281fec7ecec5f032d4aac52226b/jinja2-3.1.6.tar.gz", hash = "sha256:0137fb05990d35f1275a587e9aee6d56da821fc83491a0fb838183be43f66d6d", size = 245115 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl", hash = "sha256:85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67", size = 134899 },
 ]
 
 [[package]]
@@ -543,9 +564,11 @@ dependencies = [
     { name = "alembic" },
     { name = "asyncpg" },
     { name = "black" },
+    { name = "dishka" },
     { name = "email-validator" },
     { name = "fastapi" },
     { name = "greenlet" },
+    { name = "jinja2" },
     { name = "passlib", extra = ["bcrypt"] },
     { name = "psycopg2-binary" },
     { name = "pydantic" },
@@ -566,9 +589,11 @@ requires-dist = [
     { name = "alembic", specifier = ">=1.15.1" },
     { name = "asyncpg", specifier = ">=0.30.0" },
     { name = "black", specifier = ">=25.1.0" },
+    { name = "dishka", specifier = ">=1.4.2" },
     { name = "email-validator", specifier = ">=2.2.0" },
     { name = "fastapi", specifier = ">=0.115.11" },
     { name = "greenlet", specifier = ">=3.1.1" },
+    { name = "jinja2", specifier = ">=3.1.3" },
     { name = "passlib", extras = ["bcrypt"], specifier = ">=1.7.4" },
     { name = "psycopg2-binary", specifier = ">=2.9.10" },
     { name = "pydantic", specifier = ">=2.10.6" },

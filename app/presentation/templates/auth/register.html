@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title mb-0">Регистрация</h3>
+            </div>
+            <div class="card-body">
+                <form id="register-form">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <div class="invalid-feedback" id="email-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        <div class="invalid-feedback" id="password-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirm-password" class="form-label">Подтверждение пароля</label>
+                        <input type="password" class="form-control" id="confirm-password" name="confirm_password" required>
+                        <div class="invalid-feedback" id="confirm-password-feedback"></div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <p class="mb-0">Уже есть аккаунт? <a href="/auth/login">Войти</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Инициализация формы регистрации
+        const registerForm = document.getElementById('register-form');
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            registerUser();
+        });
+    });
+</script>
+{% endblock %} 
